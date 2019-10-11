@@ -1,0 +1,9 @@
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+cd metrics-server
+kubectl apply -f deploy/1.8+/
+edit metric-server/deploy/1.8+/metric-server-deployment.yaml
+add ++  image: k8s.gcr.io/metrics-server-amd64:v0.3.1
+        command:
+        - /metrics-server
+        - --kubelet-insecure-tls
+        - --kubelet-preferred-address-types=InternalIP
